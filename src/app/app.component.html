@@ -73,12 +73,12 @@
       <tr>
         <th>{{ pago }}</th>
         <td> currency: 'PEN': true   </td>
-        <td>{{ pago | currency: 'PEN':true }}</td>
+        <td>{{ pago | currency: 'PEN':'symbol' }}</td>
       </tr>
       <tr>
         <th>{{ pago }}</th>
         <td> currency: 'PEN': true : '4.0-0'  </td>
-        <td>{{ pago | currency: 'PEN':true:'4.0-0' }}</td>
+        <td>{{ pago | currency: 'PEN':'symbol':'4.0-0' }}</td>
       </tr>
       <tr>
         <th>{{ pago }}</th>
@@ -88,7 +88,53 @@
       <tr>
         <th>{{ jsonPrueba }}</th>
         <td> json </td>
-        <td>{{ jsonPrueba | json }}</td>
+        <td>
+          <pre>
+              {{ jsonPrueba | json }}
+          </pre>          
+        </td>
+      </tr>
+      <tr>
+        <th>{{ valorDePromesa }}</th>
+        <td> async  </td>
+        <td>{{ valorDePromesa | async }}</td>
+      </tr>
+      <tr>
+        <th>{{ fecha }}</th>
+        <td> date  </td>
+        <td>{{ fecha | date }}</td>
+      </tr>
+      <tr>
+        <th>{{ fecha }}</th>
+        <td> date: 'medium'  </td>
+        <td>{{ fecha | date: 'medium' }}</td>
+      </tr>
+      <tr>
+        <th>{{ fecha }}</th>
+        <td> date: 'MMMM - dd'  </td>
+        <td>{{ fecha | date: 'MMMM - dd' }}</td>
+      </tr>
+      <tr>
+        <th>{{ fecha }}</th>
+        <td> date: 'full'  </td>
+        <td>{{ fecha | date: 'full' }}</td>
+      </tr>
+      <tr>
+        <th>{{ nombre2 }}</th>
+        <td> capitalizado (Personalizado)  </td>
+        <td>{{ nombre2 | capitalizado }}</td>
+      </tr>
+      <tr>
+        <th>{{ nombre2 }}</th>
+        <td> capitalizado (Personalizado)  </td>
+        <td>{{ nombre2 | capitalizado:false }}</td>
+      </tr>
+      <tr>
+        <th>{{ contrasena }}</th>
+        <td> passShow | {{ verContrasena }}   
+          <button (click)="verContrasena = !verContrasena" class="btn btn-primary"> Activar / Desactiva</button>
+        </td>
+        <td>{{ contrasena | passShow:verContrasena }}</td>
       </tr>
     </tbody>
   </table>
@@ -99,3 +145,9 @@
     <li *ngFor="let item of arreglo | slice:5:20">{{item}}</li>
   </ul>
 </div>
+
+<h4>Video DOM Seguro</h4>
+<hr>
+<iframe width="560" height="315" [src]="video | domseguro: 'https://www.youtube.com/embed/'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br><br><br><br><br><br><br><br><br><br>
